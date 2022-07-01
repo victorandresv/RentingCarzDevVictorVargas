@@ -38,6 +38,16 @@ services:
       - database_pass=ANfeCbZU9PWLHvSWFftvDknpu
       - database_name=football_database
 
+  redis:
+    container_name: database-redis
+    image: redis:7.0-rc2-alpine
+    volumes: 
+      - ./database/redis-data:/data
+    networks:
+      - default_network
+    ports:
+      - 6399:6379
+
   frontend:
     container_name: reactapp
     image: nginx:alpine
