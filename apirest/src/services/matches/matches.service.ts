@@ -1,7 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { Observable } from 'rxjs';
 import { Result } from 'src/interfaces/result.interface';
 
 @Injectable()
@@ -11,8 +10,8 @@ export class MatchesService {
 
     }
 
-    getAllMatches(): Observable<AxiosResponse<Result>>{
-        return this.httpService.get(process.env["url_matches"], {
+    getAllMatches(): Promise<AxiosResponse<Result>>{
+        return this.httpService.axiosRef.get(process.env["url_matches"], {
             headers: {
                  "X-Auth-Token": process.env["apikey"]
             }
