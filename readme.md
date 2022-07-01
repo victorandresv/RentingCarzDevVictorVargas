@@ -1,4 +1,4 @@
-# RentingCarz Devepment Test from VictorVargas
+# RentingCarz Development Test from VictorVargas
 
 ## Development Environment
 
