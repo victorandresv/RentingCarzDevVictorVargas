@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import environment from './environment';
 
 class List extends Component{
 
@@ -14,7 +15,7 @@ class List extends Component{
     }
 
     componentDidMount(){
-        fetch('http://localhost:4000/matches/next-dates').then(response => {
+        fetch(environment.api_matches).then(response => {
             response.json().then(res =>{
                 this.setState({
                     list: res.matches,
