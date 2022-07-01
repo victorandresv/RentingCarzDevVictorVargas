@@ -10,6 +10,8 @@
 ```sh
 npm i -g @nestjs/cli
 npm i --save @nestjs/config
+npm i --save @nestjs/axios
+
 ```
 
 ### Running Development Environment
