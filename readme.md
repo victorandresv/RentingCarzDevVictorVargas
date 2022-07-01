@@ -25,6 +25,6 @@ yarn run start:dev
 
 ### Running Testing Environment using Docker
 ```sh
-./build-api.sh
+./build-app.sh
 docker-compose up -d
 ```
