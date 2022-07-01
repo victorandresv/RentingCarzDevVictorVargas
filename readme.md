@@ -9,6 +9,7 @@
 
 ```sh
 npm i -g @nestjs/cli
+npm i --save @nestjs/config
 ```
 
 ### Running Development Environment
