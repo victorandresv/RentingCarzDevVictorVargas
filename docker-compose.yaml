@@ -1,0 +1,40 @@
+version: "3.2"
+
+services:
+
+  mariadb:
+    container_name: database-mariadb
+    image: mariadb:10.8.2-focal
+    volumes: 
+      - ./db/krill-mariadb-data:/var/lib/mysql
+    networks:
+      - default_network
+    ports:
+      - 3306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=ANfeCbZU9PWLHvSWFftvDknpu
+      - MARIADB_USER=football_user
+      - MARIADB_PASSWORD=ANfeCbZU9PWLHvSWFftvDknpu
+      - MARIADB_DATABASE=football_database
+
+  api:
+    container_name: api-football
+    image: node:17-alpine3.14
+    build: 
+      context: ./apirest/dist
+    volumes: 
+     - ./apirest/dist/:/app/
+    networks:
+      - default_network
+    ports:
+      - 3500:3500
+    command: node /app/main.js
+    environment:
+      - apikey=cfea2f85072b4fb9b175e13611a541ed
+      - url_matches=http://api.football-data.org/v4/competitions/BL1/matches
+
+
+
+networks:
+  default_network:
+      driver: bridge
