@@ -6,7 +6,7 @@ services:
     container_name: database-mariadb
     image: mariadb:10.8.2-focal
     volumes: 
-      - ./db/krill-mariadb-data:/var/lib/mysql
+      - ./database/mariadb-data:/var/lib/mysql
     networks:
       - default_network
     ports:
@@ -27,11 +27,21 @@ services:
     networks:
       - default_network
     ports:
-      - 3500:3500
+      - 4400:4000
     command: node /app/main.js
     environment:
       - apikey=cfea2f85072b4fb9b175e13611a541ed
       - url_matches=http://api.football-data.org/v4/competitions/BL1/matches
+
+  frontend:
+    container_name: reactapp
+    image: nginx:alpine
+    volumes: 
+     - ./matches/build/:/usr/share/nginx/html/
+    networks:
+      - default_network
+    ports:
+      - 3300:80
 
 
 
