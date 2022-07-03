@@ -10,7 +10,7 @@ services:
     networks:
       - default_network
     ports:
-      - 3336:3306
+      - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=ANfeCbZU9PWLHvSWFftvDknpu
       - MARIADB_USER=football_user
@@ -32,8 +32,8 @@ services:
     environment:
       - apikey=cfea2f85072b4fb9b175e13611a541ed
       - url_matches=http://api.football-data.org/v4/competitions/BL1/matches
-      - database_host=localhost
-      - database_port=3336
+      - database_host=database-mariadb
+      - database_port=3306
       - database_user=football_user
       - database_pass=ANfeCbZU9PWLHvSWFftvDknpu
       - database_name=football_database
