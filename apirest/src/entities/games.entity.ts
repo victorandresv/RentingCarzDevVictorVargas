@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Games{
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('increment')
+    id?: number;
 
     @Column()
     game_id: number

@@ -7,9 +7,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Games } from './entities/games.entity';
 import { MatchesModule } from './controllers/matches/matches.module';
 import { GamesService } from './services/games/games.service';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
+    EventEmitterModule.forRoot(),
     ConfigModule.forRoot(), 
     HttpModule,
     TypeOrmModule.forRoot({
@@ -23,7 +25,7 @@ import { GamesService } from './services/games/games.service';
       synchronize: true,
       autoLoadEntities: true
     }),
-    MatchesModule
+    MatchesModule,
   ],
   controllers: [AppController],
   providers: [AppService, GamesService],
